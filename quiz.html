@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<link href="./style.css" type="text/css" rel="stylesheet"/>
+
+<script>
+var total=0;
+var arr=[];
+var i;
+
+function bringDown(){
+	var intro= document.getElementById("intro");
+	intro.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clicked(type,questionnum){
+var check=arr.lastIndexOf(questionnum);
+
+	if(type==="sagile"||type==="agile"){total+=4;}
+	else{total+=2;}
+
+	if(check===-1){//if the question hasn't been answered
+		arr.push(questionnum); //offically answered question
+		
+	for (i=0; i<questionnum; i++){//only as many times as there are answered questions
+		event.target.style.backgroundColor="#B2A7B5";
+	}
+	}
+
+}
+
+
+function scoreUp(){
+var quiz=document.getElementById("quiz");
+var title=document.getElementById("title0");
+
+if(total>35){//if 36 and over 
+
+quiz.style="display:none";
+document.getElementById('superagile').style.display="block";
+title.style="color:#CED1FA";
+
+}else if (total<36&&total>32){//between 35 and 33
+
+quiz.style="display:none";
+document.getElementById('agile').style.display="block";
+title.style="color:#CED1FA";
+
+}else if (total<33&&total>29){//between 32 and 30
+
+quiz.style="display:none";
+document.getElementById('waterfall').style.display="block";
+title.style="color:#CED1FA";
+
+}else{
+
+quiz.style="display:none";
+document.getElementById('superwaterfall').style.display="block";
+title.style="color:#CED1FA";
+
+}
+
+
+}
+</script>
+</head>
+
+<body>
+<title>Are You Agile Or Waterfall?</title>
+
+
+<h1 id="title0">Are You Waterfall Or Agile?</h1>
+
+<form id="quiz" action="#">
+<img class="mainpic" src="https://3av1tir25l-flywheel.netdna-ssl.com/wp-content/uploads/2017/07/agile-vs-waterfall.png"/>
+<input type="button" id="button" onclick="bringDown()" class="start" value="Start the Quiz"/>
+
+
+<br><br>
+
+
+<p id="intro"><br>Is your boss hounding you through hoops to learn a seemingly advanced system? <br>Are you looking to prove to your scrum master how 
+much you deserve that coveted raise? <br>Whether you're new to each methodology or you're the next up and coming agile ninja, this quiz will test your skills...
+<br><u>Do you have what it takes to rank as a scrum master? Let's find out!..</u><br><br></p> 
+
+<br><br>
+
+<label for="q1" class="label"><strong>Question 1:</strong><br> Starting out easy..Your boss puts you in charge of the latest project. What kind of opening statement do you send to your 
+team to get them excited for the work ahead?</label>
+<table id="q1" class="question">
+<br><br>
+
+	<tr>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',1)" >Something inspirational and well written to really fire them up!</td>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',1)">Does it really matter? I'll just skip to explaining the work.</td>
+	</tr>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',1)">I'll send something short and sweet along with a diagram describing the work <br>and the assigned roles. It's all about efficiency!</td>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',1)">I'll send a small blurb and let them take roles by themselves.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q2" class="label"><strong>Question 2:</strong><br> Now that your team has their first assignments, how do you manage their first 2 week sprint?</label>
+<table id="q2" class="question">
+<br><br>
+	<tr>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',2)">I'm gonna be on them like flies on honey! The first week is totally vital. I'm sending out documents, reports, 
+		and status updates to everyone twice weekly!</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',2)">I'll closely monitor their progress and make myself available for any questions. I'll also pay close attention to anyone
+		with two or more assignments.</td>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',2)">I'm going to relax and let them come to me with questions for the first 2 weeks. If they need my help, they'll let me know</td>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',2)">I'll check in with those doing the necessary first assignments only. The others will come to me with any concerns.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q3" class="label"><strong>Question 3: </strong><br>Your first sprint was fine but there were two late projects. How do you rally up your team to solve last weeks problems?</label>
+<table id="q3" class="question">
+<br><br>
+	<tr>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',3)">No need to micro-manage. They'll figure out the issues from last week and I'll send them an encouraging group email and deadline reminder.</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',3)">I'll set up half hour meetings with those who are late on assignments and email the rest to check in. If some are behind, it's probable others 
+		could be having problems too.</td>
+	</tr>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',3)">I'll send an email out to those struggling offering my help. Hopefully they don't need it.</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',3)">Send out a small powerpoint with some helpful information along, inspriational messages, and answer questions from team members in the email attached.</td>
+	</tr>
+</table>
+<br><br>
+
+<label for="q4" class="label"><strong>Question 4: </strong><br>Good work. Your team is back on track and a couple are even ahead of schedule. How do you keep this momentum going?</label>
+<table id="q4" class="question">
+<br><br>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',4)">They're doing well. I'm just going to leave them to continue.</td>
+		<!-- agile-->
+		<td class="answer" onclick="clicked('agile',4)">I'll send them an encouraging, office appropriate joke to let them know I'm noticing their positive progress.</td>
+	</tr>
+	<tr>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',4)">Send them a reminder of next weeks work along with a small blurb letting them know they're doing well.</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',4)">I'll send each team member a personalized email asking them if they need anything to continue and encourage those who are ahead of schedule.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q5" class="label"><strong>Question 5: </strong><br>Uh oh! New orders from higher ups are calling for a change in pace. How do you rearrage the project 
+schedule for maximum efficiency?</label>
+<table id="q5" class="question">
+<br><br>
+	<tr>	
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',5)">Add one assignment to each team member's work load, making sure they're closely related to what they're already working on.</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',5)">Organize a group meeting in which everyone talks about the pace of the project, what tasks would everyone feel comfortable/interested in taking, and assign everyone more tasks.</td>
+	</tr>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',5)">Send out a list of new available tasks and let my team members decide which they want to take. I'll encourage them to choose whatever will help them learn more.</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',5)">Call a group meeting to assign new tasks. I'll explain the change coming from higher-ups and explain how we plan to increase the pace with added assignments.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q6" class="label"><strong>Question 6: </strong>You're heading into your last week of sprints and some assignments have fallen behind. How do you inspire your team to push through the deadlines?</label>
+<table id="q6" class="question">
+<br><br>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',6)">Send out an email reminder of the deadlines with tips I think would push the process forward.</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',6)">Quickly stop by the office of each team member to do a personal check in and talk about deadlines.</td>
+	</tr>
+	<tr>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',6)">Schedule another meeting to go over why projects keep falling behind. Nothing beats facetime with your team.</td>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',6)">Send out an encouraging email that would inspire anyone to do a little more work!</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q7" class="label"><strong>Question 7: </strong>Good news, your sprints are over and the project has come to an end. Bad news, your team didn't accomplish everything outlined in the project plan. 
+Why do you think the work didn't get done?</label>
+<table id="q7" class="question">
+<br><br>
+	<tr>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',7)">My team was uncomfortable with the amount of assignments. In the future, we'll work on flow and multitasking.</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',7)">Overall my team worked well together but they lacked personal motivation. Next time, I'll put more emphasis on the impact of their work.</td>
+	</tr>
+	<tr>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',7)">We were simply overambitious with the amount of work we thought we could deliver. Going forward, we'll set more realistic expectations for our projects.</td>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',7)">My team wasn't working hard or fast enough to get the deadlines finished. Next project, the deadlines will be closer together to encourage faster work.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q8" class="label"><strong>Question 8: </strong>Things are getting worse! Management says your team has too many members and must be cut down. Which team member do you lay off and why?</label>
+<table id="q8" class="question">
+<br><br>
+	<tr>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',8)">I'm firing Angela because she's almost always late on her assignments. I'm almost convinced she doesn't work.</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',8)">I'm firing Tom because he's been consistently struggling with multitasking. These projects depend on a lot of elements and he just can't juggle.</td>
+	</tr>
+	<tr>
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',8)">I'm firing Chris because he's often late to work and asks me to work from home too often. He's been annoying me for way too long.</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',8)">I'm firing Nancy because her deliverables have been especially weak lately. She also skips meetings and leaves early without warning..</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q9" class="label"><strong>Question 9: </strong>That was difficult but now your team is well oiled and working better than ever. How do you celebrate your employees?</label>
+<table id="q9" class="question">
+<br><br>
+	<tr>	
+		<!--super waterfall-->
+		<td class="answer" onclick="clicked('swaterfall',9)">Send out an email congratulating everyone on their hard work. I think you're forgetting that we still all have work to do..</td>
+		<!--super agile-->
+		<td class="answer" onclick="clicked('sagile',9)">Throw a suprise pizza party for everyone complete with some games and free soda. If we're celebrating, we're going to do it right!</td>
+	</tr>
+	<tr>
+		<!--waterfall-->
+		<td class="answer" onclick="clicked('waterfall',9)">Stop by each persons office and let them know that you appreciate their work. You might also remind them of the next deadline while you're there.</td>
+		<!--agile-->
+		<td class="answer" onclick="clicked('agile',9)">Bring in donuts for your team during lunch. We can eat them outside and talk about the projects' success.</td>
+	</tr>
+</table>
+
+<br><br>
+
+<label for="q10" class="label"><strong>Question 10: </strong>Last but not least..Management has changed their mind and wants to add another employee to your team. 
+Which potential hire are you bringing on board?</label>
+<table>
+<br><br>
+	<!--agile-->
+	<td class="answer" onclick="clicked('agile',10)">I'm hiring online applicant Maria. She has strong collaborative skills and I think she would add to the team dynamic.</td>
+	<!--super waterfall-->
+	<td class="answer" onclick="clicked('swaterfall',10)">I'm going to offer the job back to it's former holder. I don't want to look for anyone and I'm sure my old employee would like their job back.</td>
+</tr>
+<tr>
+	<!--super agile-->
+	<td class="answer" onclick="clicked('sagile',10)">I'm hiring HR recruit Yasmine. She has strong multitasking skills and has worked in many agile teams before. Hopefully she can have an influence on the work flow of the rest of the team.</td>
+	<!--waterfall-->
+	<td class="answer" onclick="clicked('waterfall',10)">I'm hiring online applicant Eric. He seems driven, focused, and detirmined to produce good work. I think he would fit our office culture well.</td>
+</tr>
+</table>
+
+<br><br>
+
+
+<input type="submit" class="submit" onclick="scoreUp()" value="Results" />
+
+</form>
+
+<p class="results" id="superagile" style="display:none"><strong>You're A Scrum Master! </strong><br> You're incredibly focused, action driven, and goal oriented. As a boss or scrum master, you expect a lot from your employees because you take 
+pride in your work. Friends might describe you as organized, thorough, thoughtful, and even over-the-top! You know how to get your own work done and you're not afraid to remind anyone of your high standards. 
+You might even have a tendency to become a bit pushy, but it's only because you're so passionate about what you do. You demand excellence. You are the excellence. <br><br>
+~If you liked this quiz, please tell Dominique to make more!~<br></p>
+
+<p class="results" id="agile" style="display:none"><strong>You're Agile! </strong><br>You're organized, analytical, perceptive, a great multi-tasker. When it comes to managing a team, you have your finger right on the pulse... You're well aware
+ of what it takes to manage others and you have a keen eye for spotting talent in others. You also intuitively know the best ways to communicate with your team, which helps when your boss wants to send changes down the pipeline. 
+ Friends might describe you as a thoughtful, clever, and attentive leader. Overall, you take pride in your work and ideally you'd like to inspire others to do the same. Keep doing you! <br><br>
+ ~If you liked this quiz, please tell Dominique to make more!~<br></p>
+ 
+ <p class="results" id="waterfall" style="display:none"><strong>You're Waterfall! </strong><br>You're driven, patient, attentive, and relaxed. As a project manager or scrum master, you effortlessly guide your team towards achieving their goals. Naturally intuitive, you 
+ have a gift for problem solving as well as choosing approaches that suit the dynamic of your team. Friends might describe you as caring, laid back, goal-focused, and independent. One of your best qualities is probably your ability to 
+ take your hands off the wheel sometimes and let your team steer. You trust the adults you work with to get things done, so what's the need for a fancy new system?<br><br>
+ ~If you liked this quiz, please tell Dominique to make more!~<br></p>
+ 
+ <p class="results" id="superwaterfall" style="display:none"><strong>You're Super Waterfall! </strong><br>You're relaxed, efficient, organized, and possibly apathetic. As a boss, you're known to do the bare minimum to keep your team floating and operating smoothly. Not a bad thing! 
+ You know how to crack the whip without bending your wrist...just enough effort. Your friends might describe you as independent, resourceful, hard working, and sometimes...inattentive. Don't get the wrong idea, you make a great boss. Just not the 
+ best scrum master...<br><br>
+  ~If you liked this quiz, please tell Dominique to make more!~<br></p>
+  
+</body>
+</html>
